@@ -18,10 +18,17 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
     </dependency>
+	<dependency>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-resources-plugin</artifactId>
+	    <version>2.5</version>
+	</dependency>
   </dependencies>
-
+  
   <build>
+    <pluginManagement>  
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -29,9 +36,32 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <compilerVersion>1.8</compilerVersion>
+          <verbose>true</verbose>
+          <fork>true</fork>
+          <meminitial>128m</meminitial>
+          <maxmem>512m</maxmem>          
+          <executable>c:\java\jdk1.8\bin\javac</executable>
+          <compilerArgument>-verbose</compilerArgument>
         </configuration>
       </plugin>
+
+      <plugin>
+		<groupId>org.apache.maven.plugins</groupId>
+		<artifactId>maven-dependency-plugin</artifactId>
+		<version>2.2</version>
+      </plugin>
+      <!--  >Maven Graph Plugin
+      http://mvnplugins.fusesource.org/maven/1.4/maven-graph-plugin/index.html
+      -->
+      <plugin>
+		<groupId>org.fusesource.mvnplugins</groupId>
+		<artifactId>maven-graph-plugin</artifactId>
+		<version>1.4</version>
+      </plugin>
+
     </plugins>
+    </pluginManagement>  
   </build>
 
 </project>
